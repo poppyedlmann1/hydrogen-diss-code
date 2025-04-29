@@ -28,7 +28,7 @@ data$distance_acceptance_ord <- as.ordered(data$distance_acceptance_ord)
 model_data <- dplyr::select(data, distance_acceptance_ord, confidence_understanding_ord, 
                             aware_projects_bin, used_h2_bus_bin, air_quality_ord, 
                             aligns_with_future_ord)
-model_data <- na.omit(model_data)  # Remove missing values
+model_data <- na.omit(model_data)  
 
 # Remove problematic cases where distance_acceptance_ord == 0
 model_data_filtered <- model_data %>%
