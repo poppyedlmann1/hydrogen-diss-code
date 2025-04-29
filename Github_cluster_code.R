@@ -137,8 +137,17 @@ ggplot(survey_with_clusters) +
 ggsave("cluster_map_aberdeen.png", width = 10, height = 8, dpi = 300)
 
 #------------------------------------------------------------
-# References:
+# End of Geodemographic Code
 #------------------------------------------------------------
+
+# Note:
+# - The analysis used K-means clustering to identify geodemographic patterns in Aberdeen based on synthetic population data.
+# - Synthetic population was generated using spatial microsimulation (IPF), ensuring that demographic distributions matched known census constraints.
+# - Clusters were based on demographic variables (age, education, housing) and hydrogen perception scores.
+# - K-means clustering was chosen due to its simplicity and interpretability, with the number of clusters (k = 4) determined using the elbow method.
+# - Data cleaning steps included handling missing values, standardizing DZName for matching, and removing redundant columns before analysis.
+
+# References:
 #Lovelace, R. (2023). Spatial Microsimulation: An Introduction. 
 # Available at: https://spatial-microsim-book.robinlovelace.net/cakemap. 
 
