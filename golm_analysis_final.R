@@ -6,35 +6,30 @@
 # Models for spatial acceptance analysis   
 ############################################
 
-# Load required packages
 library(readr)      # For reading CSV
 library(tidyverse)  # For data wrangling
 library(VGAM)       # For Generalised Ordered Logit Model (GOLM)
 library(MASS)       # For alternative modelling (POLR)
 
-# Load the data
 setwd("C:/Users/pee1/OneDrive - University of St Andrews/Dissertation/RStudio/Hydrogen_Diss_Analysis")
 data <- read_csv("diss_data.csv")
 glimpse(data)
 
-# Ensure ordinal variables are properly formatted
 data$distance_acceptance_ord <- as.ordered(data$distance_acceptance_ord)
 
 #--------------------------------------------
 # Data Cleaning for GOLM Analysis
 #--------------------------------------------
 
-# # Select key variables for initial models
+#  Select key variables for initial models #
 model_data <- dplyr::select(data, distance_acceptance_ord, confidence_understanding_ord, 
                             aware_projects_bin, used_h2_bus_bin, air_quality_ord, 
                             aligns_with_future_ord)
 model_data <- na.omit(model_data)  
 
-# Remove problematic cases where distance_acceptance_ord == 0
 model_data_filtered <- model_data %>%
   filter(distance_acceptance_ord != 0)
 
-# Re-declare distance_acceptance_ord as ordered
 model_data_filtered$distance_acceptance_ord <- as.ordered(model_data_filtered$distance_acceptance_ord)
 
 #--------------------------------------------
@@ -51,7 +46,6 @@ summary(model_rq1)
 # RQ2: Communication and Understanding
 #--------------------------------------------
 
-#  Prepare specific dataset for RQ2 analysis
 model_rq2_data <- dplyr::select(data, distance_acceptance_ord, confidence_understanding_ord, communication_effectiveness_ord)
 model_rq2_data <- na.omit(model_rq2_data)
 model_rq2_data <- model_rq2_data %>%
@@ -69,7 +63,6 @@ summary(model_rq2)
 # RQ3: Place Identity and Acceptance
 #--------------------------------------------
 
-# Prepare specific dataset for RQ3 analysis
 model_rq3_data <- dplyr::select(data, distance_acceptance_ord, impact_landscape_ord, aligns_with_future_ord)
 model_rq3_data <- na.omit(model_rq3_data)
 model_rq3_data <- model_rq3_data %>%
