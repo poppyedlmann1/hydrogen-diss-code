@@ -23,7 +23,6 @@ library(readxl)
 # 1. Load DataZone Spatial Data
 #-----------------------------------------------
 
-# Load the shapefile
 dz_data <- st_read("H:/Dissertation/Aberdeen_DZ_Joined_Final.shp")
 
 head(dz_data)
